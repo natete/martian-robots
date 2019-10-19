@@ -1,5 +1,8 @@
 package nachogonzalezbullon.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Orientation {
     NORTH("N"),
     EAST("E"),
@@ -8,8 +11,20 @@ public enum Orientation {
 
     private String alias;
 
+    private static final Map<String, Orientation> BY_ALIAS = new HashMap<>();
+
+    static {
+        for (Orientation orientation : values()) {
+            BY_ALIAS.put(orientation.alias, orientation);
+        }
+    }
+
     Orientation(String alias) {
         this.alias = alias;
+    }
+
+    public static Orientation valueOfAlias(String alias) {
+        return BY_ALIAS.get(alias);
     }
 
     public Orientation rotate(boolean clockwise) {
