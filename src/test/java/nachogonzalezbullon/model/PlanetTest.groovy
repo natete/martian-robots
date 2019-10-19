@@ -1,12 +1,13 @@
 package nachogonzalezbullon.model
 
+import nachogonzalezbullon.exceptions.PlanetInitializationException
 import spock.lang.Specification
 
-class PlanetSurfaceTest extends Specification {
+class PlanetTest extends Specification {
 
     def "validate valid planet"() {
         when:
-        def surface = new PlanetSurface(new Position(1, 1))
+        def surface = new Planet(new Position(1, 1))
 
         then:
         surface != null
@@ -15,7 +16,7 @@ class PlanetSurfaceTest extends Specification {
     def "validate invalid planet"() {
         when:
         def position = new Position(x, y)
-        def surface = new PlanetSurface(position)
+        def surface = new Planet(position)
 
         then:
         surface == null
@@ -33,7 +34,7 @@ class PlanetSurfaceTest extends Specification {
 
     def "it should validate if the position is inbounds"() {
         given:
-        def mars = new PlanetSurface(new Position(5, 5))
+        def mars = new Planet(new Position(5, 5))
 
         expect:
         mars.isInbounds(new Position(x, y)) == isInbounds

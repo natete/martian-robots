@@ -1,9 +1,14 @@
 package nachogonzalezbullon.model;
 
+import nachogonzalezbullon.exceptions.PlanetInitializationException;
+
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  * @author nachoglezbul on 17/10/2019
  */
-public class PlanetSurface {
+public class Planet {
 
     private final Position finalPosition;
 
