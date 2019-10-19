@@ -1,5 +1,6 @@
 package nachogonzalezbullon.model
 
+import nachogonzalezbullon.exceptions.PositionInitializationException
 import spock.lang.Specification
 
 class PositionTest extends Specification {
@@ -29,8 +30,8 @@ class PositionTest extends Specification {
         error.message == expectedMessage
 
         where:
-        x  | y  | expectedException           | expectedMessage
-        51 | 0  | ExceptionInInitializerError | 'The maximum value for any coordinate is 50'
-        0  | 51 | ExceptionInInitializerError | 'The maximum value for any coordinate is 50'
+        x  | y  | expectedException               | expectedMessage
+        51 | 0  | PositionInitializationException | 'The maximum value for any coordinate is 50'
+        0  | 51 | PositionInitializationException | 'The maximum value for any coordinate is 50'
     }
 }

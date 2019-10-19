@@ -1,5 +1,8 @@
 package nachogonzalezbullon.model;
 
+import nachogonzalezbullon.exceptions.PositionInitializationException;
+import nachogonzalezbullon.exceptions.RobotInitializationException;
+
 /**
  * @author nachoglezbul on 17/10/2019
  */
@@ -9,23 +12,23 @@ public class Robot {
 
     private Orientation orientation;
 
-    public Robot(Position position, Orientation orientation) {
+    public Robot(Position position, Orientation orientation) throws RobotInitializationException {
         if (position == null) {
-            throw new ExceptionInInitializerError("A robot needs an initial position");
+            throw new RobotInitializationException("A robot needs an initial position");
         }
 
         if (orientation == null) {
-            throw new ExceptionInInitializerError("A robot needs an initial orientation");
+            throw new RobotInitializationException("A robot needs an initial orientation");
         }
 
         this.position = position;
         this.orientation = orientation;
     }
 
-    public void obey(Instruction instruction) {
+    public void obey(Instruction instruction) throws PositionInitializationException {
         switch (instruction) {
             case FORWARD:
-                this.position = getNewPosition();
+                this.position = moveForward();
                 break;
             case LEFT:
                 this.orientation = this.orientation.rotate(false);
@@ -36,7 +39,7 @@ public class Robot {
         }
     }
 
-    private Position getNewPosition() {
+    private Position moveForward() throws PositionInitializationException {
         switch (this.orientation) {
             case NORTH:
                 return new Position(this.position.getX(), this.position.getY() + 1);
@@ -57,5 +60,23 @@ public class Robot {
 
     public Orientation getOrientation() {
         return orientation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Robot robot = (Robot) o;
+
+        if (!position.equals(robot.position)) return false;
+        return orientation == robot.orientation;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = position.hashCode();
+        result = 31 * result + orientation.hashCode();
+        return result;
     }
 }

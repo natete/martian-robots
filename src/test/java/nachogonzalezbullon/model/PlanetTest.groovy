@@ -24,12 +24,12 @@ class PlanetTest extends Specification {
         error.message == expectedMessage
 
         where:
-        x  | y  | expectedException           | expectedMessage
-        0  | 0  | ExceptionInInitializerError | 'A planet has to be two dimensional'
-        1  | 0  | ExceptionInInitializerError | 'A planet has to be two dimensional'
-        0  | 1  | ExceptionInInitializerError | 'A planet has to be two dimensional'
-        -1 | 1  | ExceptionInInitializerError | 'A planet has to be two dimensional'
-        1  | -1 | ExceptionInInitializerError | 'A planet has to be two dimensional'
+        x  | y  | expectedException             | expectedMessage
+        0  | 0  | PlanetInitializationException | 'A planet has to be two dimensional'
+        1  | 0  | PlanetInitializationException | 'A planet has to be two dimensional'
+        0  | 1  | PlanetInitializationException | 'A planet has to be two dimensional'
+        -1 | 1  | PlanetInitializationException | 'A planet has to be two dimensional'
+        1  | -1 | PlanetInitializationException | 'A planet has to be two dimensional'
     }
 
     def "it should validate if the position is inbounds"() {
@@ -40,11 +40,11 @@ class PlanetTest extends Specification {
         mars.isInbounds(new Position(x, y)) == isInbounds
 
         where:
-        x   | y   | isInbounds
-        1   | 1   | true
-        100 | 1   | false
-        1   | 100 | false
-        -1  | 1   | false
-        1   | -1  | false
+        x  | y  | isInbounds
+        1  | 1  | true
+        30 | 1  | false
+        1  | 30 | false
+        -1 | 1  | false
+        1  | -1 | false
     }
 }

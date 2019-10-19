@@ -1,14 +1,16 @@
 package nachogonzalezbullon.model;
 
+import nachogonzalezbullon.exceptions.PositionInitializationException;
+
 public class Position {
 
     private final int x;
 
     private final int y;
 
-    public Position(int x, int y) {
+    public Position(int x, int y) throws PositionInitializationException {
         if (x > 50 || y > 50) {
-            throw new ExceptionInInitializerError("The maximum value for any coordinate is 50");
+            throw new PositionInitializationException("The maximum value for any coordinate is 50");
         }
 
         this.x = x;

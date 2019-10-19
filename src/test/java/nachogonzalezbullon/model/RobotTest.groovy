@@ -1,5 +1,7 @@
 package nachogonzalezbullon.model
 
+
+import nachogonzalezbullon.exceptions.RobotInitializationException
 import spock.lang.Specification
 
 class RobotTest extends Specification {
@@ -22,15 +24,14 @@ class RobotTest extends Specification {
         error.message == expectedMessage
 
         where:
-        position           | orientation      | expectedException           | expectedMessage
-        null               | Orientation.EAST | ExceptionInInitializerError | 'A robot needs an initial position'
-        new Position(0, 0) | null             | ExceptionInInitializerError | 'A robot needs an initial orientation'
+        position           | orientation      | expectedException            | expectedMessage
+        null               | Orientation.EAST | RobotInitializationException | 'A robot needs an initial position'
+        new Position(0, 0) | null             | RobotInitializationException | 'A robot needs an initial orientation'
     }
 
     def "validate instructions for a robot with orientation north"() {
         given:
-        def position = new Position(0, 0)
-        def robot = new Robot(position, Orientation.NORTH)
+        def robot = new Robot(new Position(0, 0), Orientation.NORTH)
 
         when:
         robot.obey(instruction)
@@ -48,8 +49,7 @@ class RobotTest extends Specification {
 
     def "validate instructions for a robot with orientation east"() {
         given:
-        def position = new Position(0, 0)
-        def robot = new Robot(position, Orientation.EAST)
+        def robot = new Robot(new Position(0, 0), Orientation.EAST)
 
         when:
         robot.obey(instruction)
@@ -67,8 +67,7 @@ class RobotTest extends Specification {
 
     def "validate instructions for a robot with orientation south"() {
         given:
-        def position = new Position(0, 0)
-        def robot = new Robot(position, Orientation.SOUTH)
+        def robot = new Robot(new Position(0, 0), Orientation.SOUTH)
 
         when:
         robot.obey(instruction)
@@ -86,8 +85,7 @@ class RobotTest extends Specification {
 
     def "validate instructions for a robot with orientation west"() {
         given:
-        def position = new Position(0, 0)
-        def robot = new Robot(position, Orientation.WEST)
+        def robot = new Robot(new Position(0, 0), Orientation.WEST)
 
         when:
         robot.obey(instruction)

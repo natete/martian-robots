@@ -12,11 +12,11 @@ public class Planet {
 
     private final Position finalPosition;
 
-    public PlanetSurface(Position finalPosition) throws ExceptionInInitializerError {
+    public Planet(Position finalPosition) throws PlanetInitializationException {
         if (finalPosition.getX() > 0 && finalPosition.getY() > 0) {
             this.finalPosition = finalPosition;
         } else {
-            throw new ExceptionInInitializerError("A planet has to be two dimensional");
+            throw new PlanetInitializationException("A planet has to be two dimensional");
         }
     }
 
