@@ -3,6 +3,9 @@ package com.nachogonzalezbullon.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The valid instructions for the robot.
+ */
 public enum Instruction {
     LEFT("L"),
     RIGHT("R"),
@@ -25,5 +28,4 @@ public enum Instruction {
     public static Instruction valueOfAlias(String alias) {
         return BY_ALIAS.get(alias);
     }
-
 }

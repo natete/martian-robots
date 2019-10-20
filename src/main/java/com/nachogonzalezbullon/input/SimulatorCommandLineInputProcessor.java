@@ -18,7 +18,9 @@ import java.util.Scanner;
  */
 public class SimulatorCommandLineInputProcessor implements SimulatorInputProcessor {
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PositionDTO getPlanetUpperRightCoordinates() {
         final Scanner scanner = new Scanner(System.in);
@@ -27,6 +29,13 @@ public class SimulatorCommandLineInputProcessor implements SimulatorInputProcess
         return readPlanetInput(scanner);
     }
 
+    /**
+     * Reads the upper-right coordinates of the planet from the command line.
+     * If the input is invalid it shows a message and tries again.
+     *
+     * @param scanner the input scanner.
+     * @return the {@link PositionDTO} of the upper right corner introduced by the user.
+     */
     private PositionDTO readPlanetInput(Scanner scanner) {
         try {
             return PositionMapper.mapPosition(scanner.nextLine());
@@ -36,6 +45,9 @@ public class SimulatorCommandLineInputProcessor implements SimulatorInputProcess
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public RobotDTO getRobot() {
         final Scanner scanner = new Scanner(System.in);
@@ -45,6 +57,13 @@ public class SimulatorCommandLineInputProcessor implements SimulatorInputProcess
         return readRobotInput(scanner);
     }
 
+    /**
+     * Reads the coordinates and orientation of a robot from the command line.
+     * If the input is invalid it shows a message and tries again.
+     *
+     * @param scanner the input scanner.
+     * @return the {@link RobotDTO} introduced by the user.
+     */
     private RobotDTO readRobotInput(Scanner scanner) {
         try {
             return RobotMapper.mapRobotInput(scanner.nextLine());
@@ -54,6 +73,9 @@ public class SimulatorCommandLineInputProcessor implements SimulatorInputProcess
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Collection<Instruction> getInstructions() {
         final Scanner scanner = new Scanner(System.in);
@@ -62,6 +84,13 @@ public class SimulatorCommandLineInputProcessor implements SimulatorInputProcess
         return readInstructionsInput(scanner);
     }
 
+    /**
+     * Reads the list of instructions for a robot from the command line.
+     * If the input is invalid it shows a message and tries again.
+     *
+     * @param scanner the input scanner.
+     * @return the collection of {@link Instruction} introduced by the user.
+     */
     private Collection<Instruction> readInstructionsInput(Scanner scanner) {
         try {
             return InstructionsMapper.mapInstructions(scanner.nextLine());

@@ -4,6 +4,8 @@ import com.nachogonzalezbullon.exceptions.PositionInitializationException;
 import com.nachogonzalezbullon.exceptions.RobotInitializationException;
 
 /**
+ * The robot in the simulation represented by a {@link Position}, a {@link Orientation} and a life status.
+ *
  * @author nachoglezbul on 17/10/2019
  */
 public class Robot {
@@ -15,6 +17,13 @@ public class Robot {
 
     private boolean alive;
 
+    /**
+     * Creates a new robot.
+     *
+     * @param position    the {@link Position} of the robot.
+     * @param orientation the {@link Orientation} of the robot.
+     * @throws RobotInitializationException if the position or the orientation are not provided.
+     */
     public Robot(Position position, Orientation orientation) throws RobotInitializationException {
         if (position == null) {
             throw new RobotInitializationException("A robot needs an initial position");
@@ -29,6 +38,12 @@ public class Robot {
         this.alive = true;
     }
 
+    /**
+     * Accomplishes the given instruction.
+     *
+     * @param instruction The instruction to be accomplished.
+     * @throws PositionInitializationException if the robot goes off the edge of the planet.
+     */
     public void obey(Instruction instruction) throws PositionInitializationException {
         switch (instruction) {
             case FORWARD:
@@ -43,6 +58,11 @@ public class Robot {
         }
     }
 
+    /**
+     * Moves forward according to the current orientation.
+     * @return the new {@link Position}
+     * @throws PositionInitializationException if the robot goes off the edge of the planet.
+     */
     private Position moveForward() throws PositionInitializationException {
         switch (this.orientation) {
             case NORTH:
@@ -58,10 +78,17 @@ public class Robot {
         }
     }
 
+    /**
+     * Sets the life status to false.
+     */
     public void die() {
         this.alive = false;
     }
 
+    /**
+     * Moves to the given position.
+     * @param position the {@link Position} where the robot has to go.
+     */
     public void moveTo(Position position) {
         this.position = position;
     }

@@ -3,6 +3,8 @@ package com.nachogonzalezbullon.dto;
 import com.nachogonzalezbullon.model.Orientation;
 
 /**
+ * Class that represents a Data Transfer Object for the {@link com.nachogonzalezbullon.model.Robot} class.
+ *
  * @author nachoglezbul on 19/10/2019
  */
 public class RobotDTO {

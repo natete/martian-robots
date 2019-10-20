@@ -2,15 +2,27 @@ package com.nachogonzalezbullon.model;
 
 import com.nachogonzalezbullon.exceptions.PositionInitializationException;
 
+/**
+ * A position in the simulator, represented by two coordinates, x and y.
+ */
 public class Position {
+
+    private static final int COORDINATE_MAX_VALUE = 50;
 
     private final int x;
 
     private final int y;
 
+    /**
+     * Creates a position
+     *
+     * @param x the x coordinate.
+     * @param y the y coordinate.
+     * @throws PositionInitializationException if the value is greater than {@link this#COORDINATE_MAX_VALUE}.
+     */
     public Position(int x, int y) throws PositionInitializationException {
-        if (x > 50 || y > 50) {
-            throw new PositionInitializationException("The maximum value for any coordinate is 50");
+        if (x > COORDINATE_MAX_VALUE || y > COORDINATE_MAX_VALUE) {
+            throw new PositionInitializationException("The maximum value for any coordinate is " + COORDINATE_MAX_VALUE);
         }
 
         this.x = x;

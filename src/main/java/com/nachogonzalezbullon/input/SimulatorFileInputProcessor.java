@@ -22,6 +22,12 @@ public class SimulatorFileInputProcessor implements SimulatorInputProcessor {
 
     private final Scanner scanner;
 
+    /**
+     * Creates an instance and sets the scanner to the file represented by the given file path.
+     *
+     * @param filePath the file path where the instructions to be simulated are.
+     * @throws RuntimeException if the file path does not contain a file.
+     */
     public SimulatorFileInputProcessor(final String filePath) throws RuntimeException {
         final File file = new File(filePath);
         try {
@@ -31,6 +37,11 @@ public class SimulatorFileInputProcessor implements SimulatorInputProcessor {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws RuntimeException if an execution file is provided and does not contain a valid input.
+     */
     @Override
     public PositionDTO getPlanetUpperRightCoordinates() {
         try {
@@ -40,6 +51,11 @@ public class SimulatorFileInputProcessor implements SimulatorInputProcessor {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws RuntimeException if an execution file is provided and does not contain a valid input.
+     */
     @Override
     public RobotDTO getRobot() {
         try {
@@ -53,6 +69,11 @@ public class SimulatorFileInputProcessor implements SimulatorInputProcessor {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws RuntimeException if an execution file is provided and does not contain a valid input.
+     */
     @Override
     public Collection<Instruction> getInstructions() {
         try {

@@ -1,6 +1,8 @@
 package com.nachogonzalezbullon.dto;
 
 /**
+ * Class that represents a Data Transfer Object for the {@link com.nachogonzalezbullon.model.Position} class.
+ *
  * @author nachoglezbul on 19/10/2019
  */
 public class PositionDTO {
