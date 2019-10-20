@@ -36,19 +36,19 @@ docker build -t martian-robots .
 ### Using the command line to input the instructions.
 
 ```bash
-docker run clean install exec:java -DskipTests
+docker run martian-robots mvn clean install exec:java -DskipTests
 ```
 
 ### Using a file containing the instructions (you can use any txt file placed at the root of the project).
 
 ```bash
-docker run clean install exec:java -Dexec.args="simulation.txt" -DskipTests
+docker run martian-robots mvn clean install exec:java -Dexec.args="simulation.txt" -DskipTests
 ```
 
 ### Tests
 
 ```bash
-docker run -v <project-folder>/spock-reports:/project/spock-reports clean test
+docker run -v <project-folder>/spock-reports:/project/spock-reports martian-robots mvn clean test
 ```
 
 After the execution you can review the test results opening `spock-results/index.html` with your browser.
