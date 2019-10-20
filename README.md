@@ -4,7 +4,7 @@
 
 You need either Java 12 or docker installed in your computer.
 
-## Usage with local Java
+## Usage with local Java
 
 ### Using the command line to input the instructions.
 
@@ -18,7 +18,7 @@ You need either Java 12 or docker installed in your computer.
 ./mvnw clean install exec:java -Dexec.args="simulation.txt" -DskipTests
 ```
 
-### Tests
+### Tests
 
 ```bash
 ./mvnw clean test
@@ -45,7 +45,7 @@ docker run clean install exec:java -DskipTests
 docker run clean install exec:java -Dexec.args="simulation.txt" -DskipTests
 ```
 
-### Tests
+### Tests
 
 ```bash
 docker run -v <project-folder>/spock-reports:/project/spock-reports clean test
